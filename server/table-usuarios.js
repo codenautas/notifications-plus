@@ -7,7 +7,7 @@ module.exports = function(context){
         title:'usuarios',
         editable:admin,
         fields:[
-            {name:'usuario'         , typeName:'text'   , nullable:false, allow:{update:false} },
+            {name:'usuario'         , typeName:'text'   , nullable:false, editable:admin },
             {name:'md5clave'        , typeName:'text'                   , allow:{select: context.forDump} },
             {name:'activo_hasta'    , typeName:'date'                   , editable:admin},
             {name:'bloqueado_desde' , typeName:'date'                   , editable:admin},

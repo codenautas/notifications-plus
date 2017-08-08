@@ -10,7 +10,7 @@ module.exports = function(context){
             {name:'notificacion'          , typeName:'text'     ,title:'notificación' ,nullable:false},
             {name:'fecha'                 , typeName:'date'     ,nullable:false, isName:true},
             {name:'titulo'                , typeName:'text'     ,nullable:false,   title:'título', isName:true},
-            {name:'detalles'              , typeName:'text'     ,nullable:false,   title:'título'},
+            {name:'detalles'              , typeName:'text'     ,    title:'título'},
         ],
         primaryKey:['notificacion'],
         detailTables:[

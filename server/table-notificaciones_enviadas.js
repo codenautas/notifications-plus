@@ -17,7 +17,7 @@ module.exports = function(context){
             {table: 'destinatarios'     , fields:['notificacion'], abr:'D'},
         ],
         sql:{
-            from:`select n.* from notificaciones n inner join usuarios where usuario = `+context.be.db.quoteText(context.user.usuario)
+            from:`(select n.* from notificaciones n inner join destinatarios using(notificacion)  where usuario = `+context.be.db.quoteText(context.user.usuario)+')'
         }
     },context);
 }
