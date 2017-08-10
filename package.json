@@ -11,7 +11,7 @@
   ],
   "dependencies": {
   
-    "backend-plus": "~0.15.23"
+    "backend-plus": "0.15.28"
   },
   "devDependencies": {
   },
