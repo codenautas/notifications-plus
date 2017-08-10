@@ -11,13 +11,15 @@ module.exports = function(context){
             {name:'fecha'                 , typeName:'date'     ,nullable:false, isName:true},
             {name:'titulo'                , typeName:'text'     ,nullable:false,   title:'título', isName:true},
             {name:'detalles'              , typeName:'text'     ,nullable:false,   title:'título'},
+            {name:'enviada'               , typeName:'timestamp',editable:false},
+            {name:'remitente'             , typeName:'text'     ,editable:false},
         ],
         primaryKey:['notificacion'],
         detailTables:[
             {table: 'destinatarios'     , fields:['notificacion'], abr:'D'},
         ],
         sql:{
-            from:`select n.* from notificaciones n inner join usuarios where usuario = `+context.be.db.quoteText(context.user.usuario)
+            from:`(select n.* from notificaciones n inner join destinatarios using(notificacion)  where usuario = `+context.be.db.quoteText(context.user.usuario)+')'
         }
     },context);
 }
