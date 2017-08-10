@@ -8,16 +8,19 @@ var ProceduresNotificaciones = {};
 
 ProceduresNotificaciones = [
     {
-        action:'rechazar-todo',
+        action:'enviar/notificacion',
         parameters:[
-            {name:'atomic_number'},
+            {name:'notificacion'},
         ],
         coreFunction:function(context, parameters){
             return context.client.query(
-                "SELECT url FROM element_images WHERE atomic_number=$1 ORDER BY kind",
-                [parameters.atomic_number]
-            ).fetchAll().then(function(result){
-                return result.rows;
+                `UPDATE notificaciones 
+                   SET enviada = current_timestamp, remitente = $2 
+                   WHERE notificacion = $1 AND enviada IS NULL 
+                   RETURNING enviada`,
+                [parameters.notificacion, context.username]
+            ).fetchUniqueRow().then(function(result){
+                return result.row;
             });
         }
     },
