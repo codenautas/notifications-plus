@@ -18,7 +18,8 @@ my.clientSides.enviarNotificacion={
     update: false,
     prepare: function(depot, fieldName){
         if(!depot.row.enviada){
-            depot.rowControls[fieldName].setTypedValue('enviar');
+            var boton = html.button('Enviar').create();
+            depot.rowControls[fieldName].appendChild(boton);
         }
         depot.rowControls[fieldName].onclick=function(){
             if(!depot.row.enviada){
