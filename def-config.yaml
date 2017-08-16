@@ -21,7 +21,7 @@ login:
   activeClausule: current_timestamp<=activo_hasta or activo_hasta is null
   lockedClausule: current_timestamp>=bloqueado_desde
   plus:
-    allowHttpLogin: true
+    allowHttpLogin: false
     fileStore: false
     secret: secret cat in the notification
     loginForm:

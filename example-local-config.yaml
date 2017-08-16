@@ -1,0 +1,6 @@
+db:
+  password: x38hf__39e!!dakd
+  port: 5432
+login:
+  plus:
+    allowHttpLogin: true
