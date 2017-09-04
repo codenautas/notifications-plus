@@ -3,7 +3,7 @@
 module.exports = function(context){
     var admin=context.user.rol==='admin';
     return context.be.tableDefAdapt({
-        name:'notificaciones_enviadas',
+        name:'notificaciones_pendientes',
         elementName:'notificación',
         editable:admin,
         fields:[
@@ -11,7 +11,6 @@ module.exports = function(context){
             {name:'fecha'                 , typeName:'date'     ,nullable:false, isName:true},
             {name:'titulo'                , typeName:'text'     ,nullable:false,   title:'título', isName:true},
             {name:'detalles'              , typeName:'text'     ,nullable:false,   title:'título'},
-            {name:'enviada'               , typeName:'timestamp',editable:false},
             {name:'remitente'             , typeName:'text'     ,editable:false},
         ],
         primaryKey:['notificacion'],
@@ -19,7 +18,7 @@ module.exports = function(context){
             {table: 'destinatarios'     , fields:['notificacion'], abr:'D'},
         ],
         sql:{
-            from:`(select n.* from notificaciones n inner join destinatarios using(notificacion)  where usuario = `+context.be.db.quoteText(context.user.usuario)+')'
+            from:`(select n.* from notificaciones n inner join destinatarios using(notificacion) where n.enviada is not null AND usuario = `+context.be.db.quoteText(context.user.usuario)+')'
         }
     },context);
 }

@@ -9,6 +9,10 @@ module.exports = function (context) {
         fields: [
             { name: 'notificacion', typeName: 'text', title: 'notificación', nullable: false },
             { name: 'usuario', typeName: 'text', nullable: false },
+            { name: 'viewed', typeName: 'boolean', defaultValue: 'false', editable:false, title: 'visto', clientSide: 'checkViewed' },
+            { name: 'notify', typeName: 'text', title: 'notificar', editable:false, clientSide: 'markAsNotified' },
+            { name: 'viewed_date', typeName: 'timestamp',editable:false },
+            { name: 'notified_date', typeName: 'timestamp',editable:false }
         ],
         primaryKey: ['notificacion', 'usuario'],
         foreignKeys: [
