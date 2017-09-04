@@ -22,8 +22,5 @@ module.exports = function(context){
         detailTables:[
             {table: 'destinatarios'     , fields:['notificacion'], abr:'D'},
         ],
-        sql:{
-            from:`(select n.* from notificaciones n where remitente = `+context.be.db.quoteText(context.user.usuario)+')'
-        }
     },context);
 }

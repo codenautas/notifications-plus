@@ -29,8 +29,8 @@ class AppNotifications extends backendPlus.AppBackend{
         return {menu:[
             {menuType:'menu', name:'notificaciones', menuContent:[
                 {menuType:'table', name:'notificaciones_pendientes', label:'pendientes'},
-                // {menuType:'table', name:'notificaciones_enviadas', label:'enviadas'},
-                {menuType:'table', name:'notificaciones', label:'Enviadas'},
+                {menuType:'table', name:'notificaciones_enviadas', label:'enviadas'},
+                {menuType:'table', name:'notificaciones', label:'Todas'},
             ]},
             {menuType:'menu', name:'configuración', menuContent:[
                 {menuType:'table', name:'usuarios'},
